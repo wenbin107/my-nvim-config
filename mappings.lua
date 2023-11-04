@@ -25,6 +25,9 @@ return {
     ["<leader>mw"] = { desc = "less to wxss to current file",
       "<cmd>!lessc --compress %:p > %:p:h/%:t:r.wxss<cr><space>"
     },
+    ["<leader>fT"] = { desc = "find filetypes",
+      "<cmd>Telescope filetypes<cr>"
+    },
     ["<leader>mr"] = { desc = "run server in current file",
       function()
         utils.toggle_term_cmd "npx http-serve ./ -o" end;
