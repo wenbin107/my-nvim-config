@@ -35,6 +35,17 @@ return {
     config = true
   },
   -- {
+  --   "SirVer/ultisnips",
+  --   event = "BufRead",
+  --   config = function()
+  --     vim.g.UltiSnipsExpandTrigger = "<tab>"
+  --     vim.g.UltiSnipsJumpForwardTrigger="<c-b>"
+  --     vim.g.UltiSnipsJumpBackwardTrigger="<c-z>"
+  --     -- vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
+  --     -- vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+  --   end
+  -- },
+  -- {
   --   "wenbin107/easy-commands.nvim",
   --   event = "VeryLazy",
   --   opts = {},

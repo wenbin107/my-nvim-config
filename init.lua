@@ -45,7 +45,7 @@ return {
         -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
         -- "lua_ls",
       },
-      timeout_ms = 2000, -- default format timeout
+      timeout_ms = 10000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
       --   return true
       -- end
@@ -73,55 +73,6 @@ return {
   -- This function is run last and is a good place to configuring
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
-  polish = function()
-    -- Set up custom filetypes
-    vim.filetype.add {
-      extension = {
-        foo = "fooscript",
-        wxml = "html",
-        wxss = "css",
-      },
-      filename = {
-        ["Foofile"] = "fooscript",
-      },
-      pattern = {
-        ["~/%.config/foo/.*"] = "fooscript",
-      },
-    };
+  polish = require "user.polishs"
 
-    -- 记录当前输入法
-    Current_input_method = vim.fn.system("")
-
-    -- 切换到英文输入法
-    function Switch_to_English_input_method()
-      Current_input_method = vim.fn.system("/opt/homebrew/bin/macism")
-      if Current_input_method ~= "com.apple.keylayout.ABC\n" then
-        vim.fn.system("/opt/homebrew/bin/macism com.apple.keylayout.ABC")
-      end
-    end
-
-    -- 设置输入法
-    function Set_input_method()
-      if Current_input_method ~= "com.apple.keylayout.ABC\n" then
-        vim.fn.system("/opt/homebrew/bin/macism " .. string.gsub(Current_input_method, "\n", ""))
-      end
-    end
-
-    -- 进入 normal 模式时切换为英文输入法
-    vim.cmd([[
-      augroup input_method
-      autocmd!
-      autocmd InsertEnter * :lua Set_input_method()
-      autocmd InsertLeave * :lua Switch_to_English_input_method()
-      augroup END
-    ]])
-    function lessrc()
-      --  local current_file = vim.shellescape(expand('%p'))
-      --  local current_file_name = vim.shellescape(expand('%:t:r'))
-      -- 
-      --  local commad = "slient !lessc " . current_file . " " . current_file . "/../" . filename . ".css"
-      --  
-      --  vim.execute commad
-    end
-  end,
 }
