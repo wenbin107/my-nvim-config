@@ -1,4 +1,6 @@
 local utils = require "astronvim.utils"
+-- local surround = require "user.polishs.surround"
+-- surround.surround()
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 -- Please use this mappings table to set keyboard mapping since this is the
@@ -32,10 +34,19 @@ return {
       function()
         utils.toggle_term_cmd "npx http-serve ./ -o" end;
     },
+    ["<leader>rn"] = { desc = "run node current file",
+      "<cmd>!node %<cr>"
+    },
 
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
+  v = {
+    -- ['<leader>s{'] = { function()
+    --   -- vim.api.nvim_exec('c '..surround.surround())
+    --   end
+    --   , desc = 'Surround with {'}
+  }, 
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
