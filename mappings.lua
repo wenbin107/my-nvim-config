@@ -37,7 +37,9 @@ return {
     ["<leader>rn"] = { desc = "run node current file",
       "<cmd>!node %<cr>"
     },
-
+    ["<leader>rc"] = { desc = "RunCommand",
+      "<cmd>RunCommand<cr>"
+    },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
@@ -46,6 +48,11 @@ return {
     --   -- vim.api.nvim_exec('c '..surround.surround())
     --   end
     --   , desc = 'Surround with {'}
+    --
+    ["<leader>rc"] = { desc = "RunCommand",
+      "<cmd>RunCommand<cr>"
+    },
+
   }, 
   t = {
     -- setting a mapping to false will disable it
