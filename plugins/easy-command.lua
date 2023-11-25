@@ -37,7 +37,9 @@ return {
 		      name = "RunCommand",
 		      callback = function()
 			      local commands = require("easy-commands.impl")
-			      local names = {}
+			      local names = {
+              "Glow"
+			      }
 			      for _, c in ipairs(commands) do
 				      table.insert(names, c.name)
 			      end
@@ -51,7 +53,6 @@ return {
 				        local editor = require("easy-commands.impl.util.editor")
 				        local string = require("easy-commands.impl.util.base.strings")
 				        vim.cmd(cmdName);
-				        -- print(cmdName)
 				        -- vim.api.nvim_exec2("command " .. cmdName, { output = false })
 	              -- vim.api.nvim_exec2("wincmd o", { output = false })
 				        -- local content = string.splitIntoLines(result.output)
@@ -167,7 +168,7 @@ return {
           name = "ToggleOutline",
           callback = "AerialToggle",
           dependencies = { "https://github.com/stevearc/aerial.nvim" },
-        },
+        }
       },
       aliases = {
         {
