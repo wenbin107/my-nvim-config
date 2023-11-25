@@ -6,9 +6,9 @@ return {
   --   dir = "/Users/wenbin/.config/nvim/lua/user/plugins/easy-commands.nvim",
   --   event = "VeryLazy",
   --   config = function()
-	 --    -- local commands = require("easy-commands.impl")
+	--    -- local commands = require("easy-commands.impl")
   --     -- print(vim.inspect(commands));
-	 --    -- require('lazy').setup(commands);
+	--    -- require('lazy').setup(commands);
   --   end
   -- },
   -- {
@@ -51,15 +51,15 @@ return {
   -- {
   --   "aarondiel/spread.nvim",
   --   event = "BufRead",
-	 --  config = function()
-		--   local spread = require("spread")
-		--   local default_options = {
-		-- 	  silent = true,
-		-- 	  noremap = true
-		--   }
-		--   vim.keymap.add("n", "<leader>ss", spread.out, default_options)
-		--   vim.keymap.add("n", "<leader>ssc", spread.combine, default_options)
-	 --  end
+	--  config = function()
+	--   local spread = require("spread")
+	--   local default_options = {
+	-- 	  silent = true,
+	-- 	  noremap = true
+	--   }
+	--   vim.keymap.add("n", "<leader>ss", spread.out, default_options)
+	--   vim.keymap.add("n", "<leader>ssc", spread.combine, default_options)
+	--  end
   -- }
   -- {
   --   "SirVer/ultisnips",

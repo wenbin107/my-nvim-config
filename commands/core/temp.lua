@@ -1,8 +1,11 @@
 local M = {}
-function M.genTemp(name,left,right)
+function M.genTemp(name,get_ranger)
+  
   return {
 		name = name,
 		callback = function ()
+		  local left = get_ranger()[1];
+		  local right = get_ranger()[2];
 			local current_bufnr = vim.fn.bufnr('%')
 			if not current_bufnr then
 			  return
@@ -48,11 +51,16 @@ function M.genTemp(name,left,right)
 end
 -- @param name string
 -- @param replacement table {}
-function M.insertTemp(name,replacement)
-      print(vim.inspect(replacement))
+function M.insertTemp(name,get_replacement)
   return {
 		name = name,
 		callback = function ()
+      local replacement = get_replacement
+      if type(get_replacement) == 'function' then
+        replacement = get_replacement()
+      elseif type(get_replacement) == 'table' then
+        replacement = get_replacement
+      end
 			local current_bufnr = vim.fn.bufnr('%')
 			if not current_bufnr then
 			  return

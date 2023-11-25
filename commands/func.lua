@@ -1,12 +1,42 @@
 local genTemp = require("user.commands.core.temp").genTemp;
 local insertTemp = require("user.commands.core.temp").insertTemp;
 return {
-  genTemp('AddLog','console.log(',');'),
-  insertTemp('InsertFunction',{
-    "function name(){",
-    "",
-    "}"
-  }),
+  genTemp('AddLog',function ()
+    local ft = vim.bo.ft;
+    if ft == 'php' then
+      return {
+        "var_dump(",
+        ");die;"
+      }
+    elseif ft == 'javascript' then
+      return {'console.log(',');'}
+    elseif ft == 'lua' then
+      return {'print(',')'};
+    end
+    return {'console.log(',');'}
+  end),
+  insertTemp('InsertFunction',function()
+    local ft = vim.bo.ft;
+    if ft == 'javascript'then
+      return {
+        "function name(){",
+        "",
+        "}"
+      }
+    elseif ft == 'php' then
+      return {
+        "\tpublic function name(){",
+        "",
+        "\t}"
+      }
+    else
+      return {
+        "function name(){",
+        "",
+        "}"
+      }
+    end
+  end),
   insertTemp('InsertLocalFunction',{
     "let name = async () => {",
     "}"
@@ -51,7 +81,7 @@ return {
   {
     name="DeleteFunction",
     callback = function ()
-       pcall(require("user.commands.core").delete_current_function)
+      pcall(require("user.commands.core").delete_current_function)
 		end
   }
 }

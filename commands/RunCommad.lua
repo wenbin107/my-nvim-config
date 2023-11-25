@@ -12,6 +12,7 @@ return {
 			  -- 获取当前模式
 				local current_bufnr = vim.fn.bufnr('%')
 			  local line_mode = vim.api.nvim_get_mode().mode;
+    		local ft = vim.bo.ft;
 			  if line_mode == 'v' then
 			  	vim.cmd("normal v")
 		      local select_info = get_select_info();
@@ -23,6 +24,7 @@ return {
 			-- 获取当前缓冲区号
 		  	-- 将 line_mode 存储到当前缓冲区中
 		  	if current_bufnr then
+		    	vim.api.nvim_buf_set_var(current_bufnr,'command_ft',ft)
 					vim.api.nvim_buf_set_var(current_bufnr, 'command_line_mode', line_mode)
 		  	end
 		   	-- 存储当前的模式
