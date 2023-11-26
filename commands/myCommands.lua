@@ -3,7 +3,7 @@
  local combineCmds = require("user.commands.core").combineCmds;
  local myCommands = {
   { name = "ToggleOutline", callback = "AerialNavToggle" },
-  { name = "CodeActions", callback = "Lspsaga code_actions" },
+  { name = "CodeActions", callback = "lspsaga code_actions" },
   {
     name = "DeleteEmptyLines",
     callback = "g/^$/d",
