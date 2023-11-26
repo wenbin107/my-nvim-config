@@ -1,4 +1,5 @@
-local lsp = require('lspconfig')
+-- local lsp = require('lspconfig')
+local buffer = require('user.commands.core.buffer')
 local M = {};
 function M.restore_section(stored_selection)
   if stored_selection then
@@ -9,8 +10,33 @@ function M.restore_section(stored_selection)
   end
   return 0
 end
--- 获取选中的内容和位置
 function M.get_select_info()
+  local starts = buffer.get_mark('<');
+  local ends = buffer.get_mark('>');
+  -- local ends = vim.api.nvim_b>f_get_mark(0,">");
+	local start_line = starts[1]
+  local end_line = ends[1]
+  local start_col = starts[2]
+  local end_col = ends[2]
+  local selections = {
+    first_pos = starts,
+    last_pos = ends
+  }
+  local replacement = buffer.get_text(selections);
+  -- 存储选中内容和位置
+  local stored_selection = {
+    start_line = start_line,
+    end_line = end_line,
+    start_col = start_col,
+    end_col = end_col,
+    selected_table = replacement,
+    selections = selections
+  }
+  
+  return stored_selection;
+end
+-- 获取选中的内容和位置
+function M.get_select_info_old()
 	local start_line = vim.fn.line("'<")
   local end_line = vim.fn.line("'>")
   local start_col = vim.fn.col("'<")

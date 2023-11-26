@@ -13,8 +13,8 @@ return {
 				local current_bufnr = vim.fn.bufnr('%')
 			  local line_mode = vim.api.nvim_get_mode().mode;
     		local ft = vim.bo.ft;
-			  if line_mode == 'v' then
-			  	vim.cmd("normal v")
+			  if line_mode == 'v' or line_mode == 'V' then
+			  	vim.cmd("normal "..line_mode)
 		      local select_info = get_select_info();
 		  	  if current_bufnr then
 		        vim.api.nvim_buf_set_var(current_bufnr,'command_select_info',select_info)
