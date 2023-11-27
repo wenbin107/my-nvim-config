@@ -10,6 +10,30 @@
     description = "Delete empty lines in the current file",
   },
   {
+    name = "RunCode",
+    callback = function ()
+			 local editor = require("easy-commands.impl.util.editor")
+			 local string = require("easy-commands.impl.util.base.strings")
+			 local ft = vim.bo.ft;
+			 local cmdName = '!node';
+			 if(ft == 'javascript') then
+         cmdName = '!node'
+       elseif(ft == 'lua') then
+         cmdName = 'luafile'
+			 end
+			 local result = vim.api.nvim_exec2("" .. cmdName .." %", { output = true })
+			 if not result then
+			   return
+			 end
+			 local content = string.splitIntoLines(result.output)
+			 editor.splitAndWrite(content, { vertical = true })
+	     -- vim.api.nvim_exec2("wincmd o", { output = false })
+			 -- local content = string.splitIntoLines(result.output)
+			 -- editor.splitAndWrite(content, { vertical = true })
+    end,
+    description = "run code split window",
+  },
+  {
     name = "HurlSelected",
     callback = function()
       local sys = require("easy-commands.impl.util.base.sys")
