@@ -43,6 +43,10 @@ return {
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
+  i = {
+    -- inoremap <c-u> <cmd>lua require("luasnip.extras.select_choice")()<cr>
+    -- ["<C-u>"] = { "<cmd>lua require('luasnip.extras.select_choice')()<cr>" },
+  },
   v = {
     -- ['<leader>s{'] = { function()
     --   -- vim.api.nvim_exec('c '..surround.surround())

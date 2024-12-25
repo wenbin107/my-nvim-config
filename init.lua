@@ -1,3 +1,5 @@
+local adapters = require "user.dap.adapters"
+local configurations = require "user.dap.configurations"
 return {
   -- Configure AstroNvim updates
   updater = {
@@ -28,7 +30,10 @@ return {
     virtual_text = true,
     underline = true,
   },
-
+  dap = {
+    adapters = adapters,
+    configurations = configurations
+  },
   lsp = {
     -- customize lsp formatting options
     formatting = {
