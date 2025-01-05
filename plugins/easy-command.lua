@@ -1,4 +1,4 @@
-function append_empty_lines()
+local function append_empty_lines()
   -- Get the total number of lines in the current buffer
   local line_count = vim.api.nvim_buf_line_count(0)
 
@@ -15,7 +15,7 @@ function append_empty_lines()
   end
 end
 
-function write_to_temp_file(content)
+local function write_to_temp_file(content)
   local tempfile = os.tmpname()
   local file = io.open(tempfile, "w")
   file:write(content)
