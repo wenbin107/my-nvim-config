@@ -1,4 +1,5 @@
 local utils = require "astronvim.utils"
+local findcode = require "user.polishs.findcode"
 -- local surround = require "user.polishs.surround"
 -- surround.surround()
 -- Mapping data with "desc" stored directly by vim.keymap.set().
@@ -55,6 +56,9 @@ return {
     --
     ["<leader>rc"] = { desc = "RunCommand",
       "<cmd>RunCommand<cr>"
+    },
+    ["<leader>w"] = { desc = "change word upperCase",
+      findcode.changeCase
     },
 
   }, 

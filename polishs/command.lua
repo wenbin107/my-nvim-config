@@ -1,3 +1,4 @@
+--
 -- 记录当前输入法
 Current_input_method = vim.fn.system("")
 
