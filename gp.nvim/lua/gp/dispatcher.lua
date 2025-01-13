@@ -397,6 +397,7 @@ local query = function(buf, provider, payload, handler, on_exit, callback)
 
 	local temp_file = D.query_dir ..
 		"/" .. logger.now() .. "." .. string.format("%x", math.random(0, 0xFFFFFF)) .. ".json"
+	-- remove empty messages
     for key, value in pairs(payload) do
 		if(key == 'messages') then
 			local messages = {}

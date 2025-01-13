@@ -1,3 +1,10 @@
+local file_url = os.getenv("HOME") .. "/.local/share/nvim/zhipu_key.txt";
+local fo = io.open(file_url, "r");
+local api_key
+if fo ~= nil then
+		local str = fo:read("*a");
+		api_key = vim.fn.trim(str);
+end
 return {
   {
     -- dir = "../gp.nvim",
@@ -8,7 +15,7 @@ return {
         providers = {
           zhipu = {
             endpoint = "https://open.bigmodel.cn/api/paas/v4/chat/completions",
-            secret = "b5102e32dfef8cda86fae1e1f7d1e19b.7N0ol6a0tcciBxaM",
+            secret = api_key
           },
         },
         agents = {
