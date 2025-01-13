@@ -2,9 +2,9 @@ return function()
     require "user.polishs.filetypes".extendfiletype()
     require "user.polishs.command"
     require "user.polishs.buffer".setup()
-    local openai = require('user.polishs.openai');
-    openai.setup({})
-    vim.keymap.set('v', '<C-g>r', openai.replace, {
+    --[[ local openai = require('user.polishs.openai');
+    openai.setup({}) ]]
+    --[[ vim.keymap.set('v', '<C-g>r', openai.replace, {
       silent = true,
       noremap = true,
       desc = "[G]pt [R]ewrite"
@@ -28,5 +28,5 @@ return function()
       silent = true,
       noremap = true,
       desc = "[G]pt [P]rompt"
-    })
+    }) ]]
 end
