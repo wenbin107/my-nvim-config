@@ -2,12 +2,14 @@ local M = {}
 
 
 local DEFAULT_CONFIG = {
-  api_key = nil 
+  api_key = nil
 }
 
-local fo = io.open("/.local/share/nvim/zhipu_key.txt", "w");
+local file_url = os.getenv("HOME") .. "/.local/share/nvim/zhipu_key.txt";
+local fo = io.open(file_url, "r");
 if fo ~= nil then
-		DEFAULT_CONFIG.api_key = fo:read("*a")
+		local str = fo:read("*a");
+		DEFAULT_CONFIG.api_key = vim.fn.trim(str);
 end
 -- Setup API key
 M.setup = function(opts)
