@@ -41,7 +41,7 @@ function M.changeCase()
             .. string.sub(get_line, end_p["col"] + 1, #get_line),
         })
       end
-    else
+    elseif choice == "underline" then
       if string.find(select_text, "%u") then
         vim.api.nvim_buf_set_lines(c_buffer, row - 1, row, true, {
           string.sub(get_line, 0, start_p["col"] - 1)
@@ -58,12 +58,15 @@ function M.setup()
     {
       "v",
     },
-    "<leader>wu",
+    "<leader>w",
     M.changeCase,
     {
       desc = "quick change case",
     }
   )
+  -- 针对插入模式下 <Tab> 键重新映射，设置 noremap 和 silent 参数，提高优先级
+  -- vim.api.nvim_set_keymap('i', '<Tab>', '<Plug>(coc#pum#next)', { noremap = true, silent = true })
+  -- vim.api.nvim_set_keymap('i', '<S-Tab>', '<Plug>(coc#pum#prev)', { noremap = true, silent = true })
 end
 
 return M
