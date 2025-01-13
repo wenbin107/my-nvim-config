@@ -99,17 +99,6 @@
     callback = "'<,'>s/\v\n/,/",
   },
   {
-    name = "AskGpt4",
-    callback = function()
-      require("scratch").scratchByType("gp4.md")
-    end,
-    dependencies = {
-      "robitx/gp.nvim",
-      "LintaoAmons/scratch.nvim",
-    },
-    description = "Ask chatgpt in vim and stored in scratchfile's directory",
-  },
-  {
     name = "TempKeymap",
     callback = function()
       vim.ui.input({ prompt = "write your temp keymap, like: . @q" }, function(msg)
